@@ -22,8 +22,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
+      # package-lock.json이 있으면 npm ci, 없으면 npm install
+      - run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
