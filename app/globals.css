@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* dark: 변형을 .dark 클래스 기반으로 전환 (기본은 media query) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 런타임 테마 전환: :root(라이트) / .dark(다크) 변수를 Tailwind 토큰에 연결 */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+}
+
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --accent: #0284c7;
+  --accent-soft: #0284c714;
+  --accent-contrast: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+}
+
+.dark {
+  --bg: #0a0f1a;
+  --surface: #111827;
+  --card: #161f31;
+  --border: #24304a;
+  --accent: #38bdf8;
+  --accent-soft: #0ea5e91a;
+  --accent-contrast: #0a0f1a;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
