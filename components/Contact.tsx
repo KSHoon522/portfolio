@@ -1,13 +1,16 @@
 import Section from "./Section";
+import Reveal from "./Reveal";
 import { profile } from "@/data/profile";
 
 export default function Contact() {
   return (
     <Section id="contact" number="05" title="Contact">
-      <p className="max-w-xl text-muted">
-        새로운 기회와 협업 제안을 환영합니다. 아래 채널로 편하게 연락 주세요.
-      </p>
-      <div className="mt-8 flex flex-wrap gap-4">
+      <Reveal>
+        <p className="max-w-xl text-muted">
+          새로운 기회와 협업 제안을 환영합니다. 아래 채널로 편하게 연락 주세요.
+        </p>
+      </Reveal>
+      <Reveal delay={0.15} className="mt-8 flex flex-wrap gap-4">
         <a
           href={`mailto:${profile.email}`}
           className="rounded-md bg-accent px-5 py-2.5 font-medium text-accent-contrast transition-opacity hover:opacity-90"
@@ -28,7 +31,7 @@ export default function Contact() {
         >
           Resume PDF
         </a>
-      </div>
+      </Reveal>
     </Section>
   );
 }

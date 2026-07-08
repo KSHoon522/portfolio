@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Section from "./Section";
+import Reveal from "./Reveal";
 import { demos } from "./demos/registry";
 
 export default function Showcase() {
@@ -23,12 +24,15 @@ export default function Showcase() {
 
   return (
     <Section id="showcase" number="03" title="UI Showcase">
-      <p className="mb-8 max-w-2xl text-muted">
-        실무에서 구현한 UI를 직접 조작해 볼 수 있는 인터랙티브 데모입니다.
-        데이터와 API 응답은 샘플·시뮬레이션입니다.
-      </p>
+      <Reveal>
+        <p className="mb-8 max-w-2xl text-muted">
+          실무에서 구현한 UI를 직접 조작해 볼 수 있는 인터랙티브 데모입니다.
+          데이터와 API 응답은 샘플·시뮬레이션입니다.
+        </p>
+      </Reveal>
 
-      <div className="mb-6 flex flex-wrap gap-2" role="tablist">
+      <Reveal delay={0.1}>
+        <div className="mb-6 flex flex-wrap gap-2" role="tablist">
         {demos.map((demo) => (
           <button
             key={demo.id}
@@ -45,9 +49,10 @@ export default function Showcase() {
             {demo.title}
           </button>
         ))}
-      </div>
+        </div>
+      </Reveal>
 
-      <div className="rounded-lg border border-border bg-card p-6">
+      <Reveal delay={0.15} className="rounded-lg border border-border bg-card p-6">
         <div className="mb-5 flex flex-wrap items-center gap-2">
           <p className="text-sm text-muted">{active.description}</p>
           <Link
@@ -58,7 +63,7 @@ export default function Showcase() {
           </Link>
         </div>
         <ActiveDemo />
-      </div>
+      </Reveal>
     </Section>
   );
 }

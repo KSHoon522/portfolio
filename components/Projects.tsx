@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Section from "./Section";
+import Reveal from "./Reveal";
 import { workProjects, personalProjects, type Project } from "@/data/projects";
 
 function ProjectCard({ project }: { project: Project }) {
@@ -55,14 +56,20 @@ export default function Projects() {
     <Section id="projects" number="02" title="Projects">
       <div className="space-y-6">
         {workProjects.map((p) => (
-          <ProjectCard key={p.title} project={p} />
+          <Reveal key={p.title}>
+            <ProjectCard project={p} />
+          </Reveal>
         ))}
       </div>
 
-      <h3 className="mb-6 mt-14 text-xl font-bold">Personal & Study</h3>
+      <Reveal>
+        <h3 className="mb-6 mt-14 text-xl font-bold">Personal & Study</h3>
+      </Reveal>
       <div className="grid gap-6 md:grid-cols-2">
-        {personalProjects.map((p) => (
-          <ProjectCard key={p.title} project={p} />
+        {personalProjects.map((p, i) => (
+          <Reveal key={p.title} delay={(i % 2) * 0.1} className="h-full">
+            <ProjectCard project={p} />
+          </Reveal>
         ))}
       </div>
     </Section>
