@@ -3,6 +3,13 @@
 /* dark: 변형을 .dark 클래스 기반으로 전환 (기본은 media query) */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* 폰트 토큰 */
+@theme {
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, "Malgun Gothic", sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
 /* 런타임 테마 전환: :root(라이트) / .dark(다크) 변수를 Tailwind 토큰에 연결 */
 @theme inline {
   --color-bg: var(--bg);
@@ -17,27 +24,27 @@
 }
 
 :root {
-  --bg: #f8fafc;
-  --surface: #ffffff;
-  --card: #ffffff;
-  --border: #e2e8f0;
-  --accent: #0284c7;
-  --accent-soft: #0284c714;
-  --accent-contrast: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
+  --bg: #f2f0ea;
+  --surface: #faf9f5;
+  --card: #faf9f5;
+  --border: #dcd8cc;
+  --accent: #3f6212;
+  --accent-soft: #3f621214;
+  --accent-contrast: #f2f0ea;
+  --text: #17181a;
+  --muted: #6f7280;
 }
 
 .dark {
-  --bg: #0a0f1a;
-  --surface: #111827;
-  --card: #161f31;
-  --border: #24304a;
-  --accent: #38bdf8;
-  --accent-soft: #0ea5e91a;
-  --accent-contrast: #0a0f1a;
-  --text: #e2e8f0;
-  --muted: #94a3b8;
+  --bg: #0b0c0e;
+  --surface: #101114;
+  --card: #131417;
+  --border: #26282d;
+  --accent: #c6f24e;
+  --accent-soft: #c6f24e14;
+  --accent-contrast: #0b0c0e;
+  --text: #eae8e3;
+  --muted: #8b8f98;
 }
 
 html {
@@ -47,9 +54,60 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text);
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+}
+
+/* 필름 그레인 — 화면 전체에 아주 옅은 노이즈 */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 ::selection {
   background: var(--accent);
   color: var(--accent-contrast);
+}
+
+/* 모노 유틸리티 라벨 */
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* 무한 마퀴 */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* 타이핑 커서 */
+@keyframes caret-blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background: var(--accent);
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }

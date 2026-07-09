@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import Landing from "@/components/Landing";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Showcase from "@/components/Showcase";
@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <Hero />
+        <Landing />
         <Experience />
         <Projects />
         <Showcase />

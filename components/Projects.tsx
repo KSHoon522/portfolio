@@ -3,49 +3,55 @@ import Section from "./Section";
 import Reveal from "./Reveal";
 import { workProjects, personalProjects, type Project } from "@/data/projects";
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectRow({ project, index }: { project: Project; index: number }) {
   return (
-    <article className="rounded-lg border border-border bg-card p-6 transition-colors hover:border-accent/50">
-      <h3 className="text-lg font-semibold">{project.title}</h3>
-      <p className="mt-1 text-sm text-muted">
-        {project.org} · {project.role}
-      </p>
+    <article className="group grid gap-3 border-t border-border py-8 transition-colors hover:bg-surface sm:grid-cols-12 sm:gap-6">
+      <span className="font-mono text-sm text-muted sm:col-span-1 sm:pt-1.5">
+        {String(index + 1).padStart(2, "0")}
+      </span>
 
-      <ul className="mt-4 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-text">
-        {project.points.map((point) => (
-          <li key={point}>{point}</li>
-        ))}
-      </ul>
+      <div className="sm:col-span-11">
+        <h3 className="text-xl font-bold tracking-tight transition-colors group-hover:text-accent sm:text-2xl">
+          {project.title}
+        </h3>
+        <p className="label-mono mt-1.5 text-muted">
+          {project.org} — {project.role}
+        </p>
 
-      <div className="mt-4 flex flex-wrap items-center gap-2">
-        {project.tech.map((t) => (
-          <span
-            key={t}
-            className="rounded-full bg-accent-soft px-2.5 py-1 font-mono text-xs text-accent"
-          >
-            {t}
+        <ul className="mt-4 max-w-3xl space-y-1.5 text-sm leading-relaxed text-muted">
+          {project.points.map((point) => (
+            <li key={point} className="flex gap-2.5">
+              <span className="mt-0.5 shrink-0 text-accent">·</span>
+              {point}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-4 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+          <span className="font-mono text-xs text-muted">
+            {project.tech.join(" / ")}
           </span>
-        ))}
-        <span className="ml-auto flex gap-4">
-          {project.link && (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm text-accent underline-offset-4 hover:underline"
-            >
-              GitHub →
-            </a>
-          )}
-          {project.demoId && (
-            <Link
-              href={`/showcase/${project.demoId}/`}
-              className="text-sm text-accent underline-offset-4 hover:underline"
-            >
-              관련 패턴 데모 →
-            </Link>
-          )}
-        </span>
+          <span className="ml-auto flex gap-5">
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+                className="label-mono text-muted underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+              >
+                GitHub ↗
+              </a>
+            )}
+            {project.demoId && (
+              <Link
+                href={`/showcase/${project.demoId}/`}
+                className="label-mono text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
+              >
+                Live Demo →
+              </Link>
+            )}
+          </span>
+        </div>
       </div>
     </article>
   );
@@ -54,21 +60,21 @@ function ProjectCard({ project }: { project: Project }) {
 export default function Projects() {
   return (
     <Section id="projects" number="02" title="Projects">
-      <div className="space-y-6">
-        {workProjects.map((p) => (
+      <div>
+        {workProjects.map((p, i) => (
           <Reveal key={p.title}>
-            <ProjectCard project={p} />
+            <ProjectRow project={p} index={i} />
           </Reveal>
         ))}
       </div>
 
       <Reveal>
-        <h3 className="mb-6 mt-14 text-xl font-bold">Personal & Study</h3>
+        <p className="label-mono mb-2 mt-20 text-accent">PERSONAL & STUDY</p>
       </Reveal>
-      <div className="grid gap-6 md:grid-cols-2">
+      <div>
         {personalProjects.map((p, i) => (
-          <Reveal key={p.title} delay={(i % 2) * 0.1} className="h-full">
-            <ProjectCard project={p} />
+          <Reveal key={p.title}>
+            <ProjectRow project={p} index={workProjects.length + i} />
           </Reveal>
         ))}
       </div>

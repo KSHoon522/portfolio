@@ -5,24 +5,26 @@ import { skillGroups } from "@/data/skills";
 export default function Skills() {
   return (
     <Section id="skills" number="04" title="Skills">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div>
         {skillGroups.map((group, i) => (
-          <Reveal
-            key={group.category}
-            delay={(i % 3) * 0.1}
-            className="rounded-lg border border-border bg-card p-5"
-          >
-            <h3 className="mb-3 font-semibold text-accent">{group.category}</h3>
-            <ul className="space-y-2 text-sm">
-              {group.items.map((item) => (
-                <li key={item.name} className="flex flex-wrap items-baseline gap-x-2">
-                  <span>{item.name}</span>
-                  {item.note && (
-                    <span className="text-xs text-muted">{item.note}</span>
-                  )}
-                </li>
-              ))}
-            </ul>
+          <Reveal key={group.category} delay={i * 0.05}>
+            <div className="grid gap-2 border-t border-border py-6 transition-colors hover:bg-surface sm:grid-cols-12 sm:gap-6">
+              <span className="label-mono pt-1 text-accent sm:col-span-3">
+                {group.category}
+              </span>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 sm:col-span-9">
+                {group.items.map((item) => (
+                  <span key={item.name} className="text-[15px] font-medium">
+                    {item.name}
+                    {item.note && (
+                      <span className="ml-1.5 font-mono text-xs text-muted">
+                        — {item.note}
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </div>
+            </div>
           </Reveal>
         ))}
       </div>

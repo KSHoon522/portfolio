@@ -12,14 +12,20 @@ export default function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="mx-auto max-w-5xl scroll-mt-20 px-4 py-20">
-      <Reveal>
-        <h2 className="mb-10 text-2xl font-bold tracking-tight">
-          <span className="mr-3 font-mono text-accent">{number}</span>
-          {title}
-        </h2>
-      </Reveal>
-      {children}
+    <section id={id} className="border-t border-border">
+      <div className="mx-auto max-w-6xl scroll-mt-20 px-4 py-24">
+        <Reveal>
+          <div className="mb-14 flex items-baseline justify-between gap-4">
+            <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-extrabold tracking-[-0.02em]">
+              {title}
+            </h2>
+            <span className="label-mono shrink-0 text-accent">
+              ({number})
+            </span>
+          </div>
+        </Reveal>
+        {children}
+      </div>
     </section>
   );
 }
