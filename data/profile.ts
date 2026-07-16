@@ -10,7 +10,8 @@ export const profile = {
   phone: "010-2849-0602",
   github: "https://github.com/KSHoon522",
   // 이력서 PDF를 public/documents/ 에 넣으면 다운로드 버튼이 연결됩니다.
-  resumeUrl: "/documents/kim-sanghoon-resume.pdf",
+  // 일반 <a href>는 basePath(/portfolio)가 자동 적용되지 않아 직접 prefix.
+  resumeUrl: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/documents/kim-sanghoon-resume.pdf`,
   highlights: [
     { value: "3년", label: "프론트엔드 실무 경력" },
     { value: "공공 · AI", label: "인천공항 · AI 플랫폼" },
