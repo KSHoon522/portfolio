@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Section from "./Section";
 import Reveal from "./Reveal";
+import PixelCaseGrid from "./PixelCaseGrid";
 import { workProjects, personalProjects, type Project } from "@/data/projects";
 
 function ProjectRow({ project, index }: { project: Project; index: number }) {
@@ -60,6 +61,11 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
 export default function Projects() {
   return (
     <Section id="projects" number="02" title="Projects">
+      <PixelCaseGrid />
+
+      <Reveal>
+        <p className="label-mono mb-2 text-accent">ALL PROJECTS</p>
+      </Reveal>
       <div>
         {workProjects.map((p, i) => (
           <Reveal key={p.title}>

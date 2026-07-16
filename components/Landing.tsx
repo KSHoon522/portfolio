@@ -170,6 +170,15 @@ export default function Landing() {
           </motion.h1>
 
           <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.18 }}
+            className="mt-5 font-serif text-lg italic text-muted sm:text-xl"
+          >
+            frontend first — fluent in backend.
+          </motion.p>
+
+          <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.22 }}

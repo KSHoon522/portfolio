@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import Section from "./Section";
 import Reveal from "./Reveal";
 import { demos } from "./demos/registry";
@@ -81,7 +82,21 @@ export default function Showcase() {
               상세 페이지 →
             </Link>
           </div>
-          <ActiveDemo />
+          {/* 데모 전환 — 3D 틸트 카드 모션 (Animated Cards 컨셉 번안) */}
+          <div style={{ perspective: 1200 }}>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={active.id}
+                initial={{ opacity: 0, y: 48, rotateX: -14, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -36, rotateX: 18, scale: 0.96 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                style={{ transformOrigin: "center 30%" }}
+              >
+                <ActiveDemo />
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </Reveal>
     </Section>

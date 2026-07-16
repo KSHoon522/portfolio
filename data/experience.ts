@@ -11,7 +11,7 @@ export const experiences: Experience[] = [
     period: "2025.05 ~ 재직중",
     team: "AI 플랫폼 개발팀",
     summary:
-      "인천국제공항공사 생성형 AI 플랫폼 · AI 에이전트 플랫폼 프론트엔드 개발 및 아키텍처 설계 참여",
+      "인천국제공항공사 생성형 AI 플랫폼 · AI 에이전트 플랫폼 프론트엔드 개발, BFF·게이트웨이 아키텍처 설계 참여",
   },
   {
     company: "쓰리알이노베이션",

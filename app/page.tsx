@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Landing from "@/components/Landing";
+import AboutBento from "@/components/AboutBento";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Showcase from "@/components/Showcase";
@@ -13,6 +14,7 @@ export default function Home() {
       <Header />
       <main>
         <Landing />
+        <AboutBento />
         <Experience />
         <Projects />
         <Showcase />
