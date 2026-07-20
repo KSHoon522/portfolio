@@ -33,6 +33,8 @@ export const workProjects: Project[] = [
       "WebSocket 양방향 RPC로 서버→클라이언트 도구 호출 위임, SSE로 실시간 알림 채널 분리 설계",
       "MAF DevUI 기반 임시 프론트엔드를 새 Next.js 아키텍처·컨벤션으로 점진적 재작성·이관",
       "File System Access API 기반 브라우저 워크스페이스 접근(인바운드 포트 개방 0) 설계 및 문서화",
+      "역할 기반 접근 제어(RBAC) 설계·구현 — 권한 기반 API 접근 제어(default-deny)·감사 로그·역할/권한 관리 어드민 UI",
+      "OAuth 연동·외부 도구(MCP) 통합 및 자격증명 관리 기능 개발 (백엔드 게이트웨이 포함)",
     ],
     demoId: "agent-run",
   },

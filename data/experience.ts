@@ -28,8 +28,8 @@ export const experiences: Experience[] = [
   },
   {
     company: "다큐브",
-    period: "2022.04 ~ 2022.07",
-    team: "기획팀",
+    period: "2022.03 ~ 2022.07",
+    team: "기획팀 · 인턴",
     summary: "웹 기획 및 퍼블리싱, 홈페이지 리뉴얼",
   },
 ];
