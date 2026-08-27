@@ -68,7 +68,7 @@ export const workProjects: Project[] = [
     points: [
       "글로벌·부서·검색·AI 등 역할별 관리자 화면 및 권한 분리 구현",
       "Tanstack Query·Zustand로 서버·클라이언트 상태를 관리해 복잡한 관리자 화면의 데이터 흐름 단순화",
-      "검색·관리 화면 및 데이터 테이블·대시보드 UI 구현",
+      "TypeScript 제네릭 기반 공통 테이블 컴포넌트를 설계해 17개 관리 화면에서 재사용 — 렌더 프롭·필터 주입·서버 페이지네이션 모드 지원",
     ],
     demoId: "admin-table",
   },

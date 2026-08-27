@@ -58,9 +58,39 @@ export default async function ShowcaseDetailPage({
           <demo.component />
         </div>
 
+        {/* 케이스 스터디 — 문제 정의 → 접근 → 결과 → 배움 */}
+        {demo.caseStudy && (
+          <section className="mt-14">
+            <p className="label-mono mb-2 text-accent">CASE STUDY</p>
+            <div>
+              {(
+                [
+                  ["01", "문제 정의", demo.caseStudy.problem],
+                  ["02", "가설과 접근", demo.caseStudy.approach],
+                  ["03", "결과", demo.caseStudy.result],
+                  ["04", "배운 것", demo.caseStudy.learned],
+                ] as const
+              ).map(([num, label, text]) => (
+                <div
+                  key={num}
+                  className="grid gap-2 border-t border-border py-6 sm:grid-cols-12 sm:gap-6"
+                >
+                  <div className="sm:col-span-3">
+                    <span className="mr-2 font-mono text-sm text-accent">{num}</span>
+                    <span className="text-sm font-semibold">{label}</span>
+                  </div>
+                  <p className="text-sm leading-[1.8] text-muted sm:col-span-9">{text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         <section className="mt-12 grid gap-10 md:grid-cols-12">
           <div className="md:col-span-8">
-            <p className="label-mono mb-5 text-accent">구현 포인트</p>
+            <p className="label-mono mb-5 text-accent">
+              {demo.caseStudy ? "기술 노트" : "구현 포인트"}
+            </p>
             <ul className="space-y-3 text-sm leading-relaxed text-muted">
               {demo.details.map((d) => (
                 <li key={d} className="flex gap-2.5">
