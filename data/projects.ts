@@ -80,7 +80,7 @@ export const workProjects: Project[] = [
     period: "2025.01 ~ 2025.04",
     org: "쓰리알이노베이션",
     role: "프론트엔드 개발",
-    tech: ["React", "JavaScript", "WebSocket", "HTML5/CSS3"],
+    tech: ["Next.js", "React", "JavaScript", "WebSocket", "HTML5/CSS3"],
     points: [
       "AI 기반 교육용 비디오 스트리밍 플랫폼의 프론트엔드 화면 설계 및 개발",
       "교사용 시간표 관리·수업 추가 UI 및 실시간 강의(포커스타임) 화면 구현",
