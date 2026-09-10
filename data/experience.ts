@@ -9,7 +9,7 @@ export const experiences: Experience[] = [
   {
     company: "로이드케이",
     period: "2025.05 ~ 재직중",
-    team: "AI 플랫폼 개발팀",
+    team: "솔루션개발팀",
     summary:
       "인천국제공항공사 생성형 AI 플랫폼 · AI 에이전트 플랫폼 프론트엔드 개발, BFF·게이트웨이 아키텍처 설계 참여",
   },
